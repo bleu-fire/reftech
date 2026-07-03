@@ -2,7 +2,6 @@ import { DataTypes } from "sequelize"
 import database from "../config/database.js";
 
 
-console.log(database);
 
 const Arbitres = database.define(
     "Arbitre",{
@@ -33,6 +32,29 @@ const Arbitres = database.define(
                 "OFC"         // Oceania
             ),
             allowNull:false
+        },
+        categorie:{
+            type:DataTypes.ENUM(
+                "Central",
+                "Assistant",
+                "VAR"
+            ),
+            allowNull:false
+        },
+        experience:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0
+        },
+        status:{
+            type: DataTypes.ENUM(
+                "active",
+                "suspended",
+                "injured",
+                "retired"
+            ),
+            allowNull: false,
+            defaultValue: "active"
         }
     }
 )
