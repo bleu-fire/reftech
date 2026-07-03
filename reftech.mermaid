@@ -1,0 +1,42 @@
+
+classDiagram
+
+class Arbitre {
+    +int id
+    +string nom
+    +string prenom
+    +string nationalite
+    +string confederation
+    +string categorie
+    +int experience
+    +string statut
+    +Date createdAt
+    +Date updatedAt
+}
+
+class Match {
+    +int id
+    +string equipeDomicile
+    +string equipeExterieur
+    +Date dateMatch
+    +string stade
+    +string competition
+    +string statut
+    +Date createdAt
+    +Date updatedAt
+}
+
+class Affectation {
+    +int id
+    +int arbitreId
+    +int matchId
+    +string role
+    +Date createdAt
+    +Date updatedAt
+}
+
+Arbitre "1" --> "0..*" Affectation : hasMany
+Affectation "*" --> "1" Arbitre : belongsTo
+
+Match "1" --> "0..*" Affectation : hasMany
+Affectation "*" --> "1" Match : belongsTo
