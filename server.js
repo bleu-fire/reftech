@@ -5,10 +5,13 @@ import routerArbitre from './routes/arbitre.routes.js';
 import routerAffectation  from './routes/affectation.routes.js';
 import routerMatch from './routes/match.routes.js';
 import {createArbitreValidation} from './middlewares/validate.middleware.js'
-
+import LoggerOF from  './middlewares/logger.middleware.js'
 
 const app = express();
 app.use(express.json());
+
+app.use(LoggerOF)
+
 app.use('/arbitres',routerArbitre);
 app.use('/affectation',routerAffectation);
 app.use('/matches',routerMatch);
