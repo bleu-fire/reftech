@@ -2,7 +2,6 @@ import { DataTypes } from "sequelize"
 import database from "../config/database.js";
 
 
-
 const Arbitres = database.define(
     "Arbitre",{
         id:{
@@ -58,6 +57,4 @@ const Arbitres = database.define(
         }
     }
 )
-
-
 export default Arbitres;

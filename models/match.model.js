@@ -3,16 +3,12 @@ import database from "../config/database.js";
 import { DataTypes } from "sequelize";
 
 
-
-
 const Matches = database.define(
         "match",{
             id:{
               type:DataTypes.INTEGER,
               primaryKey:true,
               autoIncrement:true
-              
-
             },
             equipeDomicile:{
                 type:DataTypes.STRING,

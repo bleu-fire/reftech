@@ -1,12 +1,14 @@
-import express  from 'express'
+import express from "express";
+import CreatAffectationController from "../controllers/affectation.controller.js";
+import { validateAffectation } from "../middlewares/validate.middleware.js";
+
+const router = express.Router();
 
 
-// GET /assignments
+router.get("/",validateAffectation, CreatAffectationController.getAllAffectations);
+router.get("/:id",validateAffectation, CreatAffectationController.getAffectationById);
+router.post("/", validateAffectation,CreatAffectationController.createAffectation);
+router.put("/:id",validateAffectation, CreatAffectationController.updateAffectation);
+router.delete("/:id",validateAffectation, CreatAffectationController.deleteAffectation);
 
-// GET /assignments/:id
-
-// POST /assignments
-
-// PUT /assignments/:id
-
-// DELETE /assignments/:id
+export default router;

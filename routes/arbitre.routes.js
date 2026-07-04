@@ -1,22 +1,12 @@
-import express from 'express'
-import CreatArbitesController  from '../controllers/arbitre.controller.js'
+import express from "express";
+import CreateArbitreController from "../controllers/arbitre.controller.js";
+import { createArbitreValidation } from "../middlewares/validate.middleware.js";
+const routerArbitre = express.Router();
 
+routerArbitre.get("/",createArbitreValidation, CreateArbitreController.ArbiteGetAll);
+routerArbitre.get("/:id", createArbitreValidation,CreateArbitreController.getArbitreById);
+routerArbitre.post("/", createArbitreValidation,CreateArbitreController.createArbitre);
+routerArbitre.put("/:id",createArbitreValidation ,CreateArbitreController.updateArbitre);
+routerArbitre.delete("/:id",createArbitreValidation,CreateArbitreController.deleteArbitre);
 
-const router = express.Router()
-
-// GET /arbitres — Get all referees
-router.get('/', CreatArbitesController.ArbiteGetAll)
-
-// GET /arbitres/:id — Get a single referee by ID
-// router.get('/arbitres/:id', getArbitreById)
-
-// // POST /arbitres — Create a new referee
-// router.post('/arbitres', createArbitre)
-
-// // PUT /arbitres/:id — Update a referee
-// router.put('/arbitres/:id', updateArbitre)
-
-// // DELETE /arbitres/:id — Delete a referee
-// router.delete('/arbitres/:id', deleteArbitre)
-
-export default router
+export default routerArbitre;

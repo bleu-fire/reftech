@@ -1,9 +1,17 @@
-// GET /matches
+import express from "express";
+import MatchController from "../controllers/match.controller.js";
+import {validateMatch} from "../middlewares/validate.middleware.js"
 
-// GET /matches/:id
+const routerMatch = express.Router();
 
-// POST /matches
+routerMatch.get("/", validateMatch,MatchController.getAllMatches);
 
-// PUT /matches/:id
+routerMatch.get("/:id",validateMatch, MatchController.getMatchById);
 
-// DELETE /matches/:id
+routerMatch.post("/", validateMatch,MatchController.createMatch);
+
+routerMatch.put("/:id", validateMatch,MatchController.updateMatch);
+
+routerMatch.delete("/:id", validateMatch,MatchController.deleteMatch);
+
+export default routerMatch;

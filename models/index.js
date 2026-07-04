@@ -1,6 +1,6 @@
 import Arbitres from "./arbitre.model.js";
 import Matches from "./match.model.js";
-import Affectations from "./affectation.model.js"
+import Affectations from "./affectation.model.js";
 
 
 Arbitres.hasMany(Affectations, {
@@ -18,6 +18,7 @@ Matches.hasMany(Affectations, {
 Affectations.belongsTo(Matches, {
     foreignKey: "matchId",
 });
+
 
 export {
     Arbitres,
