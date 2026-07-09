@@ -1,12 +1,5 @@
+import morgan from "morgan";
 
-const LoggerOF  = (req, res, next) => {
-    const now = new Date();
-    const data = now.toLocaleDateString();
-    const time = now.toLocaleTimeString()
-    console.log(
-        `[${data} ,${time}] ${req.method} ${req.originalUrl} `
-    );
+const Looger_teuflisch = morgan("dev");
 
-    next();
-};
-export default LoggerOF
+export default LoggerOF;

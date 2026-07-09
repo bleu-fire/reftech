@@ -4,6 +4,8 @@ import "./models/index.js";
 import routerArbitre from './routes/arbitre.routes.js';
 import routerAffectation  from './routes/affectation.routes.js';
 import routerMatch from './routes/match.routes.js';
+import routerAuth from './routes/auth.routes.js';
+import routerUsers from './routes/User.routes.js';
 import {createArbitreValidation} from './middlewares/validate.middleware.js'
 import LoggerOF from  './middlewares/logger.middleware.js'
 
@@ -12,9 +14,12 @@ app.use(express.json());
 
 app.use(LoggerOF)
 
+app.use('/auth', routerAuth);
 app.use('/arbitres',routerArbitre);
 app.use('/affectation',routerAffectation);
 app.use('/matches',routerMatch);
+app.use('/users', routerUsers);
+
 
 
 

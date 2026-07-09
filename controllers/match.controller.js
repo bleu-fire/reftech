@@ -3,9 +3,9 @@ import Match from "../models/match.model.js";
 class MatchController {
     createMatch = async (req, res) => {
         try {
-
+//na9s hadshi tnbdlooo 
             const match = await Match.create(req.body);
-
+//good bad 
             return res.status(201).json({message: "Match created successfully",data: match});
 
         } catch (err) {

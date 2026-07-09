@@ -23,7 +23,7 @@ const Users =  database.define(
             allowNull:true
         },
         role:{
-            type:DataTypes.ENUM(),
+            type:DataTypes.ENUM('admin','commissaire','arbitre','consultation'),
             allowNull:true
         }
     }

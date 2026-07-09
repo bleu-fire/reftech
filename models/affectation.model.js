@@ -1,26 +1,32 @@
 import database from "../config/database.js";
 import { DataTypes } from "sequelize";
 
+const Affectations = database.define("Affectation", {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    fonction: {
+        type: DataTypes.ENUM("central", "assistant", "VAR", "AVAR", "4th"),
+        allowNull: false,
+    },
+    arbitreId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "Arbitres",
+            key: "id",
+        },
+    },
+    matchId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "matches",
+            key: "id",
+        },
+    },
+});
 
-const Affectations = database.define(
-    "Affections",{
-        id:{
-            type:DataTypes.INTEGER,
-            autoIncrement:true,
-            primaryKey:true,
-        },
-        arbitreId:{
-            type:DataTypes.INTEGER,
-            allowNull:false
-        },
-        matchId:{
-            type:DataTypes.INTEGER,
-            allowNull:false
-        },
-        role:{
-            type:DataTypes.ENUM('central', 'assistant', 'VAR', 'AVAR', '4th')
-        }
-    }
-)
-
-export default Affectations
+export default Affectations;

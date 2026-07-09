@@ -19,14 +19,12 @@ Affectations.belongsTo(Matches, {
     foreignKey: "matchId",
 });
 
-Users.hasMany(Users,{
-    foreignKey:"UsersId"
-})
+
 
 export {
     Arbitres,
     Affectations,
     Matches,
-    User
+    Users
 }
 

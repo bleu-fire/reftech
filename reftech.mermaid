@@ -1,5 +1,12 @@
-
 classDiagram
+
+class User {
+    +int id
+    +string nom
+    +string email
+    +string password
+    +Role role
+}
 
 class Arbitre {
     +int id
@@ -10,33 +17,27 @@ class Arbitre {
     +string categorie
     +int experience
     +string statut
-    +Date createdAt
-    +Date updatedAt
 }
 
 class Match {
     +int id
-    +string equipeDomicile
-    +string equipeExterieur
-    +Date dateMatch
+    +date date
     +string stade
-    +string competition
-    +string statut
-    +Date createdAt
-    +Date updatedAt
+    +string ville
+    +string phase
 }
 
 class Affectation {
     +int id
+    +string fonction
     +int arbitreId
     +int matchId
-    +string role
-    +Date createdAt
-    +Date updatedAt
 }
 
-Arbitre "1" --> "0..*" Affectation : hasMany
-Affectation "*" --> "1" Arbitre : belongsTo
+User : role = admin
+User : role = commissaire
+User : role = arbitre
+User : role = consultation
 
-Match "1" --> "0..*" Affectation : hasMany
-Affectation "*" --> "1" Match : belongsTo
+Arbitre "1" --> "0..*" Affectation
+Match "1" --> "0..*" Affectation
