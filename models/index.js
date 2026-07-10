@@ -25,6 +25,5 @@ export {
     Arbitres,
     Affectations,
     Matches,
-    Users
-}
-
+    Users,
+};

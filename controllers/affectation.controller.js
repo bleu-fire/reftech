@@ -1,6 +1,5 @@
 import Affectation from "../models/affectation.model.js";
 
-
 class CreatAffectationController {
 
     // Create Affectation
@@ -40,71 +39,59 @@ class CreatAffectationController {
             const affectation = await Affectation.findByPk(id);
 
             if (!affectation) {
-                return res.status(404).json({message: "Affectation not found."});
+                return res.status(404).json({ message: "Affectation not found." });
             }
 
             return res.status(200).json(affectation);
 
         } catch (error) {
-            return res.status(500).json({message: error.message});
+            return res.status(500).json({ message: error.message });
         }
     };
 
 
     // Update Affectation
     updateAffectation = async (req, res) => {
-
         try {
-
             const { id } = req.params;
 
             const affectation = await Affectation.findByPk(id);
 
             if (!affectation) {
-                return res.status(404).json({
-                    message: "Affectation not found."
-                });
+                return res.status(404).json({ message: "Affectation not found." });
             }
 
             await affectation.update(req.body);
 
             return res.status(200).json({
                 message: "Affectation updated successfully.",
-                data: affectation
+                data: affectation,
             });
 
         } catch (error) {
-
-            return res.status(500).json({message: error.message});
-
+            return res.status(500).json({ message: error.message });
         }
-
     };
 
 
     // Delete Affectation
     deleteAffectation = async (req, res) => {
-
         try {
-
             const { id } = req.params;
 
             const affectation = await Affectation.findByPk(id);
 
             if (!affectation) {
-                return res.status(404).json({message: "Affectation not found."});
+                return res.status(404).json({ message: "Affectation not found." });
             }
 
             await affectation.destroy();
 
-            return res.status(200).json({message: "Affectation deleted successfully."});
-m
+            return res.status(200).json({ message: "Affectation deleted successfully." });
+
         } catch (error) {
-
-            return res.status(500).json({message: error.message});
-
+            return res.status(500).json({ message: error.message });
         }
-
     };
 
 }

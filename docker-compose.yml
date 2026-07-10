@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: reftech_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"       # host 5433 → container 5432 (avoids conflict with local PG)
+    volumes:
+      - reftech_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: reftech_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+      DB_HOST: db          # service name = hostname inside Docker network
+      DB_PORT: 5432
+      JWT_SECRET: Anubis
+      JWT_EXPIRES: 1h
+    volumes:
+      - .:/app             # live-reload: maps your source into the container
+      - /app/node_modules  # preserve container's node_modules
+
+volumes:
+  reftech_pgdata:

@@ -1,6 +1,6 @@
 import express from "express";
 import MatchController from "../controllers/match.controller.js";
-import {validateMatch} from "../middlewares/validate.middleware.js"
+import { validateMatch } from "../middlewares/validate.middleware.js";
 
 const routerMatch = express.Router();
 

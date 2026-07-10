@@ -1,0 +1,5 @@
+node_modules
+.git
+.env
+*.rest
+API_DOCUMENTATION.md
